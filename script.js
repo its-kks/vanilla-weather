@@ -49,3 +49,7 @@ const upGreetDate=function(){
 }
 upGreetDate();
 setInterval(upGreetDate, 5*1000);
+searchBut=document.querySelector("#searchBut")
+inputLoc=document.querySelector("#location")
+searchBut.addEventListener('click',()=>{
+    console.log(updateLoc(inputLoc.value))})
