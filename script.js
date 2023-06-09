@@ -23,14 +23,6 @@ let monthObject = {
     12: "December"
 };  
 let apiKey="a052237ff42b4a5c88290441230906";
-let localWeatObj={
-    curTemp:undefined,
-    maxTemp:undefined,
-    minTemp:undefined,
-    avgTemp:undefined,
-    text:undefined,
-    imageUrl:undefined
-};
 const greet=function (dateObj){
     let hour=dateObj.getHours()
     if(hour>=0 && hour<5){
@@ -66,6 +58,16 @@ searchBut.addEventListener('click',()=>{
 })
 //setting up api call
 const updateLoc=function (location){
+    let localWeatObj={
+        curTemp:undefined,
+        maxTemp:undefined,
+        minTemp:undefined,
+        avgTemp:undefined,
+        text:undefined,
+        imageUrl:undefined,
+        willRain:undefined,
+        rainPer:undefined
+    };
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&aqi=yes`)
     .then((response)=>{
         console.log("response",response)
@@ -83,21 +85,30 @@ const updateLoc=function (location){
         localWeatObj.maxTemp=data.forecast.forecastday[0].day.maxtemp_c;
         localWeatObj.minTemp=data.forecast.forecastday[0].day.mintemp_c;
         localWeatObj.avgTemp=data.forecast.forecastday[0].day.avgtemp_c;
+        localWeatObj.willRain=data.forecast.forecastday[0].day.daily_will_it_rain;
+        localWeatObj.rainPer=data.forecast.forecastday[0].day.daily_chance_of_rain;
         console.log(localWeatObj);
-        updateWeather();
+        updateWeather(localWeatObj);
     })
     .catch(e=>{
+        updateWeather(localWeatObj)
         console.log("Error Occured",e)
     })
 }
 //update weather
-const updateWeather=function (){
+const updateWeather=function (localWeatObj){
     document.querySelector("#maxTemp .avgValue").innerText=`${localWeatObj.maxTemp} C`;
     document.querySelector("#minTemp .avgValue").innerText=`${localWeatObj.minTemp} C`;
     document.querySelector("#avgTemp .avgValue").innerText=`${localWeatObj.avgTemp} C`;
     document.querySelector("#weatImg img").src=localWeatObj.imageUrl;
     document.querySelector("#curTemp .curValue").innerText=`${localWeatObj.curTemp} C`;
     document.querySelector("#weatText").innerText=`${localWeatObj.text}`;
-
+    document.querySelector("#rainPer .precValue").innerHTML=`${localWeatObj.rainPer} %`;
+    if(localWeatObj.willRain==1){
+        document.querySelector("#umbrella .precValue").innerHTML=`Yes`;
+    }
+    else{
+        document.querySelector("#umbrella .precValue").innerHTML=`No`;
+    }
 }
 //https://api.weatherapi.com/v1/forecast.json?key=a052237ff42b4a5c88290441230906&q=${location}&aqi=yes
