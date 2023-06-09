@@ -22,6 +22,15 @@ let monthObject = {
     11: "November",
     12: "December"
 };  
+let apiKey="a052237ff42b4a5c88290441230906";
+let localWeatObj={
+    curTemp:undefined,
+    maxTemp:undefined,
+    minTemp:undefined,
+    avgTemp:undefined,
+    text:undefined,
+    imageUrl:undefined
+};
 const greet=function (dateObj){
     let hour=dateObj.getHours()
     if(hour>=0 && hour<5){
@@ -57,8 +66,7 @@ searchBut.addEventListener('click',()=>{
 })
 //setting up api call
 const updateLoc=function (location){
-    apiObject=undefined
-    fetch(`https://api.weatherapi.com/v1/current.json?key=a052237ff42b4a5c88290441230906&q=${location}&aqi=yes`)
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&aqi=yes`)
     .then((response)=>{
         console.log("response",response)
         if(response.ok){
@@ -69,16 +77,23 @@ const updateLoc=function (location){
         }
     })
     .then((data)=>{
-        apiObject=data
-        console.log("Main",data)
-        updateWeather(apiObject)
+        localWeatObj.curTemp=data.current.temp_c;
+        localWeatObj.text=data.current.condition.text;
+        localWeatObj.imageUrl=data.current.condition.icon;
+        localWeatObj.maxTemp=data.forecast.forecastday[0].day.maxtemp_c;
+        localWeatObj.minTemp=data.forecast.forecastday[0].day.mintemp_c;
+        localWeatObj.avgTemp=data.forecast.forecastday[0].day.avgtemp_c;
+        console.log(localWeatObj);
+        updateWeather();
     })
     .catch(e=>{
-        console.log("Eroor Occured",e)
+        console.log("Error Occured",e)
     })
 }
 //update weather
-const updateWeather=function (apiObject){
-    console.log(apiObject.forecast)
-    document.querySelector("#tempPrec").innerHTML=apiObject.current.feelslike_c+apiObject.current.condition.text
+const updateWeather=function (){
+    document.querySelector("#maxTemp .avgValue").innerText=`${localWeatObj.maxTemp} C`;
+    document.querySelector("#minTemp .avgValue").innerText=`${localWeatObj.minTemp} C`;
+    document.querySelector("#avgTemp .avgValue").innerText=`${localWeatObj.avgTemp} C`;
 }
+//https://api.weatherapi.com/v1/forecast.json?key=a052237ff42b4a5c88290441230906&q=${location}&aqi=yes
