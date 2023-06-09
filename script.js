@@ -40,6 +40,7 @@ const greet=function (dateObj){
         return "Good Night"
     }
 }
+//updating greeting and time on regular interval of 5sec
 const upGreetDate=function(){
     let dateDiv=document.querySelector("#dateTime");
     dateDiv.innerText=`${weekObject[cDateTime.getDay()]}, ${monthObject[cDateTime.getMonth()]} ${cDateTime.getDate()}`
