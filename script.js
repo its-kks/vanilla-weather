@@ -71,8 +71,14 @@ const updateLoc=function (location){
     .then((data)=>{
         apiObject=data
         console.log("Main",data)
+        updateWeather(apiObject)
     })
     .catch(e=>{
         console.log("Eroor Occured",e)
     })
+}
+//update weather
+const updateWeather=function (apiObject){
+    console.log(apiObject.forecast)
+    document.querySelector("#tempPrec").innerHTML=apiObject.current.feelslike_c+apiObject.current.condition.text
 }
