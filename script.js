@@ -95,5 +95,9 @@ const updateWeather=function (){
     document.querySelector("#maxTemp .avgValue").innerText=`${localWeatObj.maxTemp} C`;
     document.querySelector("#minTemp .avgValue").innerText=`${localWeatObj.minTemp} C`;
     document.querySelector("#avgTemp .avgValue").innerText=`${localWeatObj.avgTemp} C`;
+    document.querySelector("#weatImg img").src=localWeatObj.imageUrl;
+    document.querySelector("#curTemp .curValue").innerText=`${localWeatObj.curTemp} C`;
+    document.querySelector("#weatText").innerText=`${localWeatObj.text}`;
+
 }
 //https://api.weatherapi.com/v1/forecast.json?key=a052237ff42b4a5c88290441230906&q=${location}&aqi=yes

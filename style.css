@@ -48,3 +48,6 @@ header{
 div{
 	border:2px solid black;
 }
+.tempPrecDiv{
+	display: flex;
+}
