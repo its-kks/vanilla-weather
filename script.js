@@ -49,7 +49,30 @@ const upGreetDate=function(){
 }
 upGreetDate();
 setInterval(upGreetDate, 5*1000);
+//setting up search button
 searchBut=document.querySelector("#searchBut")
 inputLoc=document.querySelector("#location")
 searchBut.addEventListener('click',()=>{
-    console.log(updateLoc(inputLoc.value))})
+    console.log(updateLoc(inputLoc.value))
+})
+//setting up api call
+const updateLoc=function (location){
+    apiObject=undefined
+    fetch(`https://api.weatherapi.com/v1/current.json?key=a052237ff42b4a5c88290441230906&q=${location}&aqi=yes`)
+    .then((response)=>{
+        console.log("response",response)
+        if(response.ok){
+            return response.json()
+        }
+        else{
+            throw new Error(`Error Code:${response.status}`)
+        }
+    })
+    .then((data)=>{
+        apiObject=data
+        console.log("Main",data)
+    })
+    .catch(e=>{
+        console.log("Eroor Occured",e)
+    })
+}
