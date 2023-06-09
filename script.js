@@ -1,5 +1,4 @@
 let cDateTime=new Date();
-let dateDiv=document.querySelector("#dateTime");
 let weekObject = {
     1: "Monday",
     2: "Tuesday",
@@ -23,10 +22,8 @@ let monthObject = {
     11: "November",
     12: "December"
 };  
-dateDiv.innerText=`${weekObject[cDateTime.getDay()]}, ${monthObject[cDateTime.getMonth()]} ${cDateTime.getDate()}`
-console.log(cDateTime.getHours())
 const greet=function (dateObj){
-    hour=dateObj.getHours()
+    let hour=dateObj.getHours()
     if(hour>=0 && hour<5){
         return "Good Night"
     }
@@ -36,9 +33,18 @@ const greet=function (dateObj){
     else if(hour>=12 && hour<17){
         return "Good Afternoon"
     }
+    else if(hour>=17 && hour<22){
+        return "Good Evening"
+    }
     else{
         return "Good Night"
     }
 }
-greeting=document.querySelector("#greeting");
-greeting.innerText=greet(cDateTime);
+const upGreetDate=function(){
+    let dateDiv=document.querySelector("#dateTime");
+    dateDiv.innerText=`${weekObject[cDateTime.getDay()]}, ${monthObject[cDateTime.getMonth()]} ${cDateTime.getDate()}`
+    let greeting = document.querySelector("#greeting");
+    greeting.innerText = greet(cDateTime);
+}
+upGreetDate();
+setInterval(upGreetDate, 5*1000);
