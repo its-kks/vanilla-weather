@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <div id="dateTime"></div>
@@ -13,7 +15,7 @@
         <div id="changeLocation">
             <form>
                 <input type="text" name="location" id="location" placeholder="Enter location">
-                <button type="button" id="searchBut"><img src="resources/whiteSearch.png"></button>
+                <button type="button" id="searchBut">&#128270</button>
             </form>
         </div>
     </header>
@@ -22,42 +24,42 @@
             <div id="average" class="tempPrecDiv">
                 <div id="maxTemp">
                     <div class="avgHead">Max Temp</div>
-                    <div class="avgValue"></div>
+                    <div class="avgValue">Null</div>
                 </div>
                 <div id="minTemp">
                     <div class="avgHead">Min Temp</div>
-                    <div class="avgValue"></div>
+                    <div class="avgValue">Null</div>
                 </div>
                 <div id="avgTemp">
                     <div class="avgHead">Avg Temp</div>
-                    <div class="avgValue"></div>
+                    <div class="avgValue">Null</div>
                 </div>
             </div>
-            <div id="curTemp" class="tempPrecDiv">
+            <div id="current" class="tempPrecDiv">
                 <div id="weatImg">
-                    <img img="unhappy.jped" alt="Weather img">
+                    <img src="unhappy.jpeg" alt="Weather img">
                 </div>
                 <div id="curTemp">
                     <div class="curHead">Current Temp</div>
-                    <div class="curValue"></div>
+                    <div class="curValue">Null</div>
                 </div>
-                <div id="weatText"></div>
+                <div id="weatText">Null</div>
             </div>
             <div id="curPrec" class="tempPrecDiv">
                 <div id="rainPer">
                     <div class="precHead">Chances of Rain</div>
-                    <div class="precValue"></div>
+                    <div class="precValue">Null</div>
                 </div>
                 <div id="umbrella">
                     <div class="precHead">Carry umbrella</div>
-                    <div class="precValue"></div>
+                    <div class="precValue">Null</div>
                 </div>
             </div>
         </div>
-        <div id="imageWeather"></div>
-        <div id="uvWind"></div>
+        <div id="uvWindPol"></div>
     </div>
-    <footer id="location"></footer>
+    <footer id="locationFoot"></footer>
     <script src="script.js"></script>
 </body>
+
 </html>

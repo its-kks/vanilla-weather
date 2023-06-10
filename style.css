@@ -41,13 +41,119 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-header{
-    display: flex;
-    
+body{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100vh;
 }
-div{
-	border:2px solid black;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+	background-color:coral;
+}
+
+header div {
+    /* background-color: coral; */
+    text-align: center;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#dateTime {
+    flex-grow: 1;
+	font-size:30px;
+	padding:12px;
+}
+
+#changeLocation {
+    flex-grow: 1;
+	display: flex;
+	align-items:center;
+	justify-content: center;
+}
+#greeting {
+    flex-grow: 3;
+	font-size:30px;
+	padding:12px;
+}
+#location{
+	width: 100%;
+	border: 3px solid #00B4CC;
+	border-right: none;
+	padding: 5px;
+	height: 20px;
+	border-radius: 5px 0 0 5px;
+	outline: none;
+	color: #9DBFAF;
+  }
+#location:focus {
+	color: #00B4CC;
+}
+#changeLocation form{
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+#searchBut{
+	width: 40px;
+	height: 36px;
+	border: 1px solid #00B4CC;
+	background: #00B4CC;
+	text-align: center;
+	color: #fff;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	font-size: 20px;
+}
+#compWeather{
+	display: flex;
+	justify-content: space-evenly;
+	background-color:rgb(255, 179, 0);
+	text-align: center;
+}
+#tempPrec,#uvWindPol{
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	border-radius: 15px;
+	padding:15px;
 }
 .tempPrecDiv{
 	display: flex;
+	background-color: white;
+	align-items: center;
+	justify-content: space-evenly;
+}
+#uvWindPol{
+	height: 300px;
+	width:300px;
+}
+.avgHead,.curHead,.precHead{
+	font-size:25px;
+	color:rgba(0, 0, 0, 0.5);
+}
+.avgValue,.curValue,.precValue{
+	font-size: 40px;
+}
+#weatText{
+	font-size:40px;
+}
+#maxTemp,#minTemp,#avgTemp,#weatImg,#curTemp,#weatText
+,#rainPer,#umbrella{
+	padding-left:15px;
+	padding-right:15px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+#current,#average{
+	border-bottom:2px solid rgba(0, 0, 0, 0.5);
+}
+#average{
+	border-radius: 15px 15px 0px 0px;
+}
+#curPrec{
+	border-radius: 0px 0px 15px 15px;
 }

@@ -111,4 +111,3 @@ const updateWeather=function (localWeatObj){
         document.querySelector("#umbrella .precValue").innerHTML=`No`;
     }
 }
-//https://api.weatherapi.com/v1/forecast.json?key=a052237ff42b4a5c88290441230906&q=${location}&aqi=yes
