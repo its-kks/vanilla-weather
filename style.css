@@ -202,3 +202,37 @@ li{
 	text-align: center;
 	padding-top: 10px;
 }
+@media (max-width:1000px){
+	header{
+		flex-direction: column;
+		align-items: center;
+	}
+	#compWeather{
+		flex-direction: column;
+	}
+	#tempPrec{
+		margin:5px 15px 5px 15px;
+	}
+	#uvWindPol{
+		margin:5px 15px 5px 15px;
+	}
+	/* .avgHead,.curHead,.precHead{
+		font-size:20px;
+	}
+	.avgValue,.curValue,.precValue{
+		font-size: 25px;
+	}
+	#weatText{
+		font-size: 25px;
+	}
+	#maxTemp,#minTemp,#avgTemp,#weatImg,#curTemp,#weatText
+	,#rainPer,#umbrella{
+		padding:5px 15px 5px 15px;
+	} */
+	#tempPrec{
+		transform: scale(0.7);
+	}
+	#uvWindPol{
+		transform: scale(0.9);
+	}
+}
