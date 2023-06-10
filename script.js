@@ -58,16 +58,22 @@ searchBut.addEventListener('click',()=>{
 })
 //setting up api call
 const updateLoc=function (location){
-    let localWeatObj={
-        curTemp:undefined,
-        maxTemp:undefined,
-        minTemp:undefined,
-        avgTemp:undefined,
-        text:undefined,
-        imageUrl:undefined,
-        willRain:undefined,
-        rainPer:undefined
+    let localWeatObj = {
+        "curTemp": undefined,
+        "maxTemp": undefined,
+        "minTemp": undefined,
+        "avgTemp": undefined,
+        "text": undefined,
+        "imageUrl": undefined,
+        "willRain": undefined,
+        "rainPer": undefined,
+        "windSpeed": undefined,
+        "uvIndex": undefined,
+        "air_quality": {
+            "values": []
+        }
     };
+    
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&aqi=yes`)
     .then((response)=>{
         console.log("response",response)
@@ -87,6 +93,15 @@ const updateLoc=function (location){
         localWeatObj.avgTemp=data.forecast.forecastday[0].day.avgtemp_c;
         localWeatObj.willRain=data.forecast.forecastday[0].day.daily_will_it_rain;
         localWeatObj.rainPer=data.forecast.forecastday[0].day.daily_chance_of_rain;
+        localWeatObj.windSpeed=data.current.wind_kph;
+        localWeatObj.uvIndex=data.current.uv;
+        // Assign air quality values to the array
+        localWeatObj.air_quality.values.push(data.current.air_quality.co);
+        localWeatObj.air_quality.values.push(data.current.air_quality.no2);
+        localWeatObj.air_quality.values.push(data.current.air_quality.o3);
+        localWeatObj.air_quality.values.push(data.current.air_quality.so2);
+        localWeatObj.air_quality.values.push(data.current.air_quality.pm2_5);
+        localWeatObj.air_quality.values.push(data.current.air_quality.pm10);
         console.log(localWeatObj);
         updateWeather(localWeatObj);
     })
@@ -97,6 +112,7 @@ const updateLoc=function (location){
 }
 //update weather
 const updateWeather=function (localWeatObj){
+    console.log(localWeatObj)
     document.querySelector("#maxTemp .avgValue").innerText=`${localWeatObj.maxTemp} C`;
     document.querySelector("#minTemp .avgValue").innerText=`${localWeatObj.minTemp} C`;
     document.querySelector("#avgTemp .avgValue").innerText=`${localWeatObj.avgTemp} C`;
@@ -110,4 +126,9 @@ const updateWeather=function (localWeatObj){
     else{
         document.querySelector("#umbrella .precValue").innerHTML=`No`;
     }
+    for (let i = 0; i < localWeatObj.air_quality.values.length; i++) {
+        document.querySelector(`#aq ul li:nth-child(${i + 1})`).innerHTML += localWeatObj.air_quality.values[i];
+    }    
+    document.querySelector("#wind div:nth-child(2)").innerHTML=`${localWeatObj.windSpeed} kmph`
+    document.querySelector("#uv > div:nth-child(2)").innerHTML=`${localWeatObj.uvIndex}`
 }
