@@ -216,19 +216,6 @@ li{
 	#uvWindPol{
 		margin:5px 15px 5px 15px;
 	}
-	/* .avgHead,.curHead,.precHead{
-		font-size:20px;
-	}
-	.avgValue,.curValue,.precValue{
-		font-size: 25px;
-	}
-	#weatText{
-		font-size: 25px;
-	}
-	#maxTemp,#minTemp,#avgTemp,#weatImg,#curTemp,#weatText
-	,#rainPer,#umbrella{
-		padding:5px 15px 5px 15px;
-	} */
 	#tempPrec{
 		transform: scale(0.7);
 	}
