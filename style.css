@@ -1,8 +1,8 @@
-/* html, body, div, span, applet, object, iframe,
+html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+small, strike, strong, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -19,7 +19,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-/*
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -27,9 +27,9 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
+/* ol, ul {
 	list-style: none;
-}
+} */
 blockquote, q {
 	quotes: none;
 }
@@ -41,12 +41,14 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-} */
+}
 body{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	min-height: 100vh;
+	background-color:rgb(255, 179, 0);
+
 }
 header {
     display: flex;
@@ -54,7 +56,9 @@ header {
     align-items: flex-start;
 	background-color:coral;
 }
-
+/* ul{
+	list-style:disc;
+} */
 header div {
     /* background-color: coral; */
     text-align: center;
@@ -112,15 +116,18 @@ header div {
 #compWeather{
 	display: flex;
 	justify-content: space-evenly;
-	background-color:rgb(255, 179, 0);
 	text-align: center;
+	align-items: center;
 }
-#tempPrec,#uvWindPol{
+#tempPrec{
 	display: flex;
 	flex-direction: column;
 	background-color: white;
 	border-radius: 15px;
 	padding:15px;
+	border: 2px solid grey;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
 }
 .tempPrecDiv{
 	display: flex;
@@ -128,13 +135,10 @@ header div {
 	align-items: center;
 	justify-content: space-evenly;
 }
-#uvWindPol{
-	height: 300px;
-	width:300px;
-}
 .avgHead,.curHead,.precHead{
 	font-size:25px;
 	color:rgba(0, 0, 0, 0.5);
+	margin-bottom:20px;
 }
 .avgValue,.curValue,.precValue{
 	font-size: 40px;
@@ -157,4 +161,44 @@ header div {
 }
 #curPrec{
 	border-radius: 0px 0px 15px 15px;
+}
+#uvWindPol{
+	display: flex;
+	background-color: white;
+	border-radius: 15px;
+	padding:15px;
+	border: 2px solid grey;
+	height: fit-content;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+.uwpHead{
+	font-size: 25px;
+	color:rgba(0, 0, 0, 0.5);
+	margin-bottom: 20px;
+}
+#aq div:nth-child(2){
+	font-size: 25px;
+}
+li{
+	margin-bottom: 10px;
+}
+#aq{
+	margin-left:20px;
+	border-right: 2px solid grey;
+	padding-right:40px;
+}
+#windUv{
+	padding-left:20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+#windUv div div:nth-child(2){
+	font-size: 35px;
+}
+#locationFoot{
+	background-color: coral;
+	height: 20px;
+	text-align: center;
+	padding-top: 10px;
 }

@@ -71,7 +71,9 @@ const updateLoc=function (location){
         "uvIndex": undefined,
         "air_quality": {
             "values": []
-        }
+        },
+        "region":undefined,
+        "location":undefined
     };
     
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&aqi=yes`)
@@ -102,6 +104,8 @@ const updateLoc=function (location){
         localWeatObj.air_quality.values.push(data.current.air_quality.so2);
         localWeatObj.air_quality.values.push(data.current.air_quality.pm2_5);
         localWeatObj.air_quality.values.push(data.current.air_quality.pm10);
+        localWeatObj.location=data.location.name;
+        localWeatObj.region=data.location.region;
         console.log(localWeatObj);
         updateWeather(localWeatObj);
     })
@@ -110,7 +114,7 @@ const updateLoc=function (location){
         console.log("Error Occured",e)
     })
 }
-//update weather
+//update weather and footer
 const updateWeather=function (localWeatObj){
     console.log(localWeatObj)
     document.querySelector("#maxTemp .avgValue").innerText=`${localWeatObj.maxTemp} C`;
@@ -123,12 +127,22 @@ const updateWeather=function (localWeatObj){
     if(localWeatObj.willRain==1){
         document.querySelector("#umbrella .precValue").innerHTML=`Yes`;
     }
-    else{
+    else if(localWeatObj.willRain==0){ 
         document.querySelector("#umbrella .precValue").innerHTML=`No`;
     }
+    else{
+        document.querySelector('#umbrella .precValue').innerHTML=`?`
+    }
     for (let i = 0; i < localWeatObj.air_quality.values.length; i++) {
-        document.querySelector(`#aq ul li:nth-child(${i + 1})`).innerHTML += localWeatObj.air_quality.values[i];
+        let value=(str)=>{
+            let array=str.split(':');
+            return array[0]+":";
+        }
+        console.log(value(document.querySelector(`#aq ul li:nth-child(${i + 1})`).innerHTML));
+        document.querySelector(`#aq ul li:nth-child(${i + 1})`).innerHTML= value(document.querySelector(`#aq ul li:nth-child(${i + 1})`).innerHTML)
+        +Math.round(localWeatObj.air_quality.values[i]);
     }    
     document.querySelector("#wind div:nth-child(2)").innerHTML=`${localWeatObj.windSpeed} kmph`
     document.querySelector("#uv > div:nth-child(2)").innerHTML=`${localWeatObj.uvIndex}`
+    document.querySelector("#locationFoot").innerHTML=`${localWeatObj.location}, ${localWeatObj.region}`
 }
