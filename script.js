@@ -194,9 +194,7 @@ const getImgAndSet = function (str) {
     })
     .then((data) => {
       // Process the response data here
-      let num=Math.floor(Math.random()*10);
-      console.log(num)
-      let img=data.photos[num].src.landscape;
+      let img=data.photos[0].src.landscape;
       document.body.style.backgroundImage =`url(${img})`;
     })
     .catch((error) => {
