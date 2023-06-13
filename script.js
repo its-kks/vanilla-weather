@@ -179,7 +179,7 @@ const updateWeather = function (localWeatObj) {
 //extract background image
 const pexelKey = "UoMCkcNjWs4jZMYf0oG4l3L3IDacCxWxqwMcehBUyfFgFPu4c4OTMsJJ";
 const getImgAndSet = function (str) {
-  fetch(`https://api.pexels.com/v1/search?query=${str}&per_page=1`, {
+  fetch(`https://api.pexels.com/v1/search?query=${str}&per_page=10`, {
     headers: {
       Authorization: `${pexelKey}`,
     },
@@ -194,7 +194,9 @@ const getImgAndSet = function (str) {
     })
     .then((data) => {
       // Process the response data here
-      let img=data.photos[0].src.landscape;
+      let num=Math.floor(Math.random()*10);
+      console.log(num)
+      let img=data.photos[num].src.landscape;
       document.body.style.backgroundImage =`url(${img})`;
     })
     .catch((error) => {

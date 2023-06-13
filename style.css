@@ -55,7 +55,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-	background-color:coral;
+	background-color:rgba(255,127,0,0.8);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 header div {
     text-align: center;
@@ -135,6 +136,9 @@ header div {
 	font-size:25px;
 	color:rgba(0, 0, 0, 0.8);
 	margin-bottom:20px;
+	background-color: rgba(240,248,255,0.2);
+	border-radius:10px;
+	padding:10px;
 }
 .avgValue,.curValue,.precValue{
 	font-size: 40px;
@@ -171,6 +175,9 @@ header div {
 	font-size: 25px;
 	color:rgba(0, 0, 0, 0.8);
 	margin-bottom: 20px;
+	background-color: rgba(240,248,255,0.2);
+	border-radius:10px;
+	padding:10px;
 }
 #aq div:nth-child(2){
 	font-size: 25px;
@@ -197,10 +204,11 @@ li{
 	font-size: 35px;
 }
 #locationFoot{
-	background-color: coral;
 	height: 20px;
 	text-align: center;
 	padding-top: 10px;
+	background-color:rgba(255,127,0,0.8);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 @media (max-width:1000px){
 	header{
