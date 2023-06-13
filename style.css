@@ -49,7 +49,7 @@ body{
 	min-height: 100vh;
 	background-color:rgb(255, 179, 0);
 	background-size: cover;
-
+	color:white;
 }
 header {
     display: flex;
@@ -57,11 +57,7 @@ header {
     align-items: flex-start;
 	background-color:coral;
 }
-/* ul{
-	list-style:disc;
-} */
 header div {
-    /* background-color: coral; */
     text-align: center;
     margin: 5px;
     padding: 10px;
@@ -123,22 +119,21 @@ header div {
 #tempPrec{
 	display: flex;
 	flex-direction: column;
-	background-color: rgba(0, 0, 0, 0.);
+	background-color: rgba(0, 0, 0, 0.2);
 	border-radius: 15px;
 	padding:15px;
-	border: 2px solid grey;
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 
 }
 .tempPrecDiv{
 	display: flex;
-	background-color: white;
+	background-color: rgba(0, 0, 0, 0.2);
 	align-items: center;
 	justify-content: space-evenly;
 }
 .avgHead,.curHead,.precHead{
 	font-size:25px;
-	color:rgba(0, 0, 0, 0.5);
+	color:rgba(0, 0, 0, 0.8);
 	margin-bottom:20px;
 }
 .avgValue,.curValue,.precValue{
@@ -165,16 +160,16 @@ header div {
 }
 #uvWindPol{
 	display: flex;
-	background-color: white;
+	background-color: rgba(0, 0, 0, 0.2);
 	border-radius: 15px;
 	padding:15px;
-	border: 2px solid grey;
-	height: fit-content;
+	padding:15px;
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
+
 .uwpHead{
 	font-size: 25px;
-	color:rgba(0, 0, 0, 0.5);
+	color:rgba(0, 0, 0, 0.8);
 	margin-bottom: 20px;
 }
 #aq div:nth-child(2){
@@ -184,15 +179,19 @@ li{
 	margin-bottom: 10px;
 }
 #aq{
-	margin-left:20px;
-	border-right: 2px solid grey;
-	padding-right:40px;
+	border-right: 2px solid rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 15px 0px 0px 15px;
+	padding:15px 30px 15px 40px;
 }
 #windUv{
-	padding-left:20px;
+	padding:0px 10px 0px 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 0px 15px 15px 0px;
+
 }
 #windUv div div:nth-child(2){
 	font-size: 35px;
