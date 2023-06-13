@@ -88,7 +88,7 @@ const updateLoc = function (location) {
     `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&aqi=yes`
   )
     .then((response) => {
-    //   console.log("response", response);
+      //   console.log("response", response);
       if (response.ok) {
         return response.json();
       } else {
@@ -117,7 +117,7 @@ const updateLoc = function (location) {
       localWeatObj.air_quality.values.push(data.current.air_quality.pm10);
       localWeatObj.location = data.location.name;
       localWeatObj.region = data.location.region;
-    //   console.log(localWeatObj);
+      //   console.log(localWeatObj);
       updateWeather(localWeatObj);
     })
     .catch((e) => {
@@ -127,7 +127,9 @@ const updateLoc = function (location) {
 };
 //update weather and footer
 const updateWeather = function (localWeatObj) {
-//   console.log(localWeatObj);
+  //changing background
+  getImgAndSet(localWeatObj.text);
+  //   console.log(localWeatObj);
   document.querySelector(
     "#maxTemp .avgValue"
   ).innerText = `${localWeatObj.maxTemp} C`;
@@ -173,4 +175,30 @@ const updateWeather = function (localWeatObj) {
   document.querySelector(
     "#locationFoot"
   ).innerHTML = `${localWeatObj.location}, ${localWeatObj.region}`;
+};
+//extract background image
+const pexelKey = "UoMCkcNjWs4jZMYf0oG4l3L3IDacCxWxqwMcehBUyfFgFPu4c4OTMsJJ";
+const getImgAndSet = function (str) {
+  fetch(`https://api.pexels.com/v1/search?query=${str}&per_page=1`, {
+    headers: {
+      Authorization: `${pexelKey}`,
+    },
+  })
+    .then((response) =>{
+      if(response.ok){
+        return response.json();
+      }
+      else{
+        throw new Error(`Error Code:${response.status}`);
+      }
+    })
+    .then((data) => {
+      // Process the response data here
+      let img=data.photos[0].src.landscape;
+      document.body.style.backgroundImage =`url(${img})`;
+    })
+    .catch((error) => {
+      // Handle any errors that occur during the request
+      console.error("Error:", error);
+    });
 };
