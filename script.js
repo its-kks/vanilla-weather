@@ -195,7 +195,8 @@ const getImgAndSet = function (str) {
     })
     .then((data) => {
       // Process the response data here
-      let img=data.photos[0].src.landscape;
+      let rand=Math.floor(Math.random() * 10);
+      let img=data.photos[rand].src.landscape;
       document.querySelector('#backgroundImg').style.backgroundImage =`url(${img})`;
     })
     .catch((error) => {

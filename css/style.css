@@ -47,7 +47,7 @@ body{
 	flex-direction: column;
 	justify-content: space-between;
 	min-height: 100vh;
-	background-color:rgb(255, 179, 0);
+	background-color:white;
 	background-size: cover;
 	color:white;
 }
