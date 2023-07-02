@@ -50,18 +50,26 @@ const upGreetDate = function () {
 upGreetDate();
 setInterval(upGreetDate, 5 * 1000);
 //setting up search button
-searchBut = document.querySelector("#searchBut");
-inputLoc = document.querySelector("#location");
+const form = document.querySelector("#changeLocation form");
+const searchBut = document.querySelector("#searchBut");
+const inputLoc = document.querySelector("#location");
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  showLoader();
+  console.log(updateLoc(inputLoc.value));
+});
 searchBut.addEventListener("click", () => {
   showLoader();
   console.log(updateLoc(inputLoc.value));
 });
-inputLoc.addEventListener('keydown',(event)=>{
-  if(event.code=='Enter'){
+inputLoc.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
     showLoader();
+    console.log(inputLoc.value);
     console.log(updateLoc(inputLoc.value));
   }
-})
+});
 //fetching user's ip
 fetch("https://api.ipify.org?format=json")
   .then((response) => response.json())
