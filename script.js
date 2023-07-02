@@ -53,6 +53,7 @@ setInterval(upGreetDate, 5 * 1000);
 searchBut = document.querySelector("#searchBut");
 inputLoc = document.querySelector("#location");
 searchBut.addEventListener("click", () => {
+  showLoader();
   console.log(updateLoc(inputLoc.value));
 });
 //fetching user's ip
@@ -176,6 +177,7 @@ const updateWeather = function (localWeatObj) {
   document.querySelector(
     "#locationFoot"
   ).innerHTML = `${localWeatObj.location}, ${localWeatObj.region}`;
+  //stop loader
 };
 //extract background image
 const pexelKey = "UoMCkcNjWs4jZMYf0oG4l3L3IDacCxWxqwMcehBUyfFgFPu4c4OTMsJJ";
@@ -203,4 +205,15 @@ const getImgAndSet = function (str) {
       // Handle any errors that occur during the request
       console.error("Error:", error);
     });
+    //stop loader
+
+    setTimeout(hideLoader,2000);
 };
+const showLoader=function (){
+  document.querySelector("#loaderDiv").classList.remove('loaderStop');
+  document.querySelector("#sunSvg").style.animationName="fadeResizeAnimation";
+}
+const hideLoader=function(){
+  document.querySelector("#loaderDiv").classList.add('loaderStop');
+  document.querySelector("#sunSvg").style.animationName="none";
+}
