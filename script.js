@@ -56,6 +56,12 @@ searchBut.addEventListener("click", () => {
   showLoader();
   console.log(updateLoc(inputLoc.value));
 });
+inputLoc.addEventListener('keydown',(event)=>{
+  if(event.code=='Enter'){
+    showLoader();
+    console.log(updateLoc(inputLoc.value));
+  }
+})
 //fetching user's ip
 fetch("https://api.ipify.org?format=json")
   .then((response) => response.json())
