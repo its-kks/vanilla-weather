@@ -6,7 +6,7 @@ let weekObject = {
   4: "Thursday",
   5: "Friday",
   6: "Saturday",
-  7: "Sunday",
+  0: "Sunday",
 };
 let monthObject = {
   1: "January",
@@ -43,6 +43,7 @@ const upGreetDate = function () {
   dateDiv.innerText = `${weekObject[cDateTime.getDay()]}, ${
     monthObject[cDateTime.getMonth()]
   } ${cDateTime.getDate()}`;
+  console.log(cDateTime.getDay());
   let greeting = document.querySelector("#greeting");
   greeting.innerText = greet(cDateTime);
 };
@@ -195,7 +196,7 @@ const getImgAndSet = function (str) {
     .then((data) => {
       // Process the response data here
       let img=data.photos[0].src.landscape;
-      document.body.style.backgroundImage =`url(${img})`;
+      document.querySelector('#backgroundImg').style.backgroundImage =`url(${img})`;
     })
     .catch((error) => {
       // Handle any errors that occur during the request
